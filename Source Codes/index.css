@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  .light {
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 93%;
+    --secondary-foreground: 222 47% 20%;
+
+    --muted: 220 14% 93%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 69% 38%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+
+    --border: 220 13% 89%;
+    --input: 220 13% 89%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 20%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 95%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 199 89% 48%;
+
+    --glass: 0 0% 100% / 0.85;
+    --glass-border: 220 13% 85% / 0.5;
+
+    --chart-grid: 220 13% 91%;
+    --chart-text: 220 9% 46%;
+    --chart-tooltip-bg: 0 0% 100%;
+    --chart-tooltip-border: 220 13% 89%;
+    --chart-tooltip-text: 222 47% 11%;
+
+    --glow-primary: 199 89% 48%;
+    --glow-destructive: 0 84% 60%;
+  }
+
+  .dark {
+    --background: 225 35% 5%;
+    --foreground: 210 40% 93%;
+
+    --card: 225 30% 8%;
+    --card-foreground: 210 40% 93%;
+
+    --popover: 225 30% 8%;
+    --popover-foreground: 210 40% 93%;
+
+    --primary: 187 94% 43%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 225 25% 12%;
+    --secondary-foreground: 210 40% 85%;
+
+    --muted: 225 25% 12%;
+    --muted-foreground: 215 20% 50%;
+
+    --accent: 225 25% 15%;
+    --accent-foreground: 210 40% 93%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 69% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+
+    --border: 225 20% 14%;
+    --input: 225 20% 14%;
+    --ring: 187 94% 43%;
+
+    --sidebar-background: 225 35% 4%;
+    --sidebar-foreground: 210 40% 85%;
+    --sidebar-primary: 187 94% 43%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 225 25% 10%;
+    --sidebar-accent-foreground: 210 40% 93%;
+    --sidebar-border: 225 20% 12%;
+    --sidebar-ring: 187 94% 43%;
+
+    --glass: 225 30% 8% / 0.7;
+    --glass-border: 225 20% 20% / 0.3;
+
+    --chart-grid: 225 20% 14%;
+    --chart-text: 215 20% 50%;
+    --chart-tooltip-bg: 225 30% 10%;
+    --chart-tooltip-border: 225 20% 18%;
+    --chart-tooltip-text: 210 40% 93%;
+
+    --glow-primary: 187 94% 43%;
+    --glow-destructive: 0 84% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border/60 rounded-full;
+    transition: background 0.2s;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-xl;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--card) / 0.9) 0%,
+      hsl(var(--card) / 0.6) 100%
+    );
+  }
+
+  .light .glass-card {
+    @apply shadow-lg;
+    box-shadow:
+      0 1px 3px hsl(220 13% 50% / 0.06),
+      0 8px 32px hsl(220 13% 50% / 0.04);
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--card) / 0.95) 0%,
+      hsl(var(--card) / 0.85) 100%
+    );
+  }
+
+  .dark .glass-card {
+    box-shadow:
+      0 0 0 1px hsl(225 20% 15% / 0.5),
+      0 8px 40px -12px hsl(225 35% 3% / 0.6);
+  }
+
+  .glow-primary {
+    box-shadow:
+      0 0 15px hsl(var(--glow-primary) / 0.12),
+      0 0 45px hsl(var(--glow-primary) / 0.04),
+      inset 0 1px 0 hsl(var(--glow-primary) / 0.06);
+  }
+
+  .glow-destructive {
+    box-shadow:
+      0 0 15px hsl(var(--glow-destructive) / 0.12),
+      0 0 45px hsl(var(--glow-destructive) / 0.04),
+      inset 0 1px 0 hsl(var(--glow-destructive) / 0.06);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(187 94% 60%));
+  }
+
+  .light .text-gradient {
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(210 100% 45%));
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .premium-border {
+    @apply border border-border/40 transition-all duration-300;
+  }
+
+  .premium-border:hover {
+    border-color: hsl(var(--primary) / 0.25);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.04);
+  }
+
+  .premium-hover {
+    @apply transition-all duration-300;
+  }
+
+  .premium-hover:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 40px -12px hsl(var(--primary) / 0.15),
+      0 4px 12px -4px hsl(0 0% 0% / 0.06);
+  }
+
+  .light .premium-hover:hover {
+    box-shadow:
+      0 12px 40px -12px hsl(var(--primary) / 0.1),
+      0 4px 12px -4px hsl(0 0% 0% / 0.04);
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--primary) / 0.03) 50%,
+      transparent 100%
+    );
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+  }
+
+  .section-divider {
+    @apply h-px w-full;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--border)) 50%,
+      transparent 100%
+    );
+  }
+
+  .active-indicator {
+    @apply absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-full bg-primary;
+  }
+}
